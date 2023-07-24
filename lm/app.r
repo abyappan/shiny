@@ -98,6 +98,12 @@ server <- function(input, output) {
         ylab('Y')
     })
     
+    # Model data
+    model <- eventReactive(input$run, {
+        lm(formula = y ~ x,
+        data = dataInput())
+    })
+
     # Linear regression plot
     output$lmPlot <- renderPlot({
         coeffs <- coef(model(), 2)
@@ -118,12 +124,6 @@ server <- function(input, output) {
         geom_text(aes(x=12, y=11, label = paste("R squared: ", r2)))
     })
 
-    # Model data
-    model <- eventReactive(input$run, {
-        lm(formula = y ~ x,
-        data = dataInput())
-    })
-    
     output$contents <- renderTable({
         
         # input$file1 will be NULL initially. After the user selects

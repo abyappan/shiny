@@ -13,7 +13,7 @@ library(shiny)
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Linear Modeling Dashboard"),
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
@@ -93,7 +93,7 @@ server <- function(input, output) {
         plot(dataInput()$x,dataInput()$y)
     })
     
-    output$lmtPlot <- renderPlot({
+    output$lmPlot <- renderPlot({
         plot(dataInput()$x,dataInput()$y)
     })
     

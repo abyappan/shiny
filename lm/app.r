@@ -11,59 +11,51 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-
-            
-            # Input: Select a file ----
-            fileInput("file1", "Choose CSV File",
-                      multiple = FALSE,
-                      accept = c("text/csv",
-                                 "text/comma-separated-values,text/plain",
-                                 ".csv")),
-            
-            # Horizontal line ----
-            tags$hr(),
-            
-            # Input: Checkbox if file has header ----
-            checkboxInput("header", "Header", TRUE),
-            
-            # Input: Select separator ----
-            radioButtons("sep", "Separator",
-                         choices = c(Comma = ",",
-                                     Semicolon = ";",
-                                     Tab = "\t"),
-                         selected = ","),
-            
-            # Input: Select quotes ----
-            radioButtons("quote", "Quote",
-                         choices = c(None = "",
-                                     "Double Quote" = '"',
-                                     "Single Quote" = "'"),
-                         selected = '"'),
-            
-            # Horizontal line ----
-            tags$hr(),
-            
-            # Input: Select number of rows to display ----
-            radioButtons("disp", "Display",
-                         choices = c(Head = "head",
-                                     All = "all"),
-                         selected = "head")
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot"),
-           plotOutput("lmPlot"),
-           tableOutput("contents")
+  titlePanel(title = "Linear Modeling Dashboard"),
+  sidebarLayout(
+    sidebarPanel = sidebarPanel(
+      fileInput(
+        inputId = "file1",
+        label = "Choose CSV File",
+        multiple = FALSE,
+        accept = c(
+          "text/csv",
+          "text/comma-separated-values,text/plain",
+          ".csv"
         )
+      ),
+      Unknown Ui Code,
+      checkboxInput(
+        inputId = "header",
+        label = "Header",
+        value = TRUE
+      ),
+      radioButtons(
+        inputId = "sep",
+        label = "Separator",
+        choices = c(Comma = ",", Semicolon = ";", Tab = "	"),
+        selected = ","
+      ),
+      radioButtons(
+        inputId = "quote",
+        label = "Quote",
+        choices = c(None = "", Double Quote = """, Single Quote = "'"),
+        selected = """
+      ),
+      Unknown Ui Code,
+      radioButtons(
+        inputId = "disp",
+        label = "Display",
+        choices = c(Head = "head", All = "all"),
+        selected = "head"
+      )
+    ),
+    mainPanel = mainPanel(
+      plotOutput(outputId = "distPlot"),
+      plotOutput(outputId = "lmPlot"),
+      tableOutput(outputId = "contents")
     )
+  )
 )
 
 # Define server logic required to draw a histogram

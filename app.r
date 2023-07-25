@@ -64,7 +64,7 @@ ui <- fluidPage(
             tags$hr(),
 
             # Action button: linear model over scatter plot
-            actionButton('run', label = "Linear Model data")
+            actionButton('runLM', label = "Linear Model data")
         ),
 
         # Show a plot of the generated distribution
@@ -99,7 +99,7 @@ server <- function(input, output) {
     })
     
     # Model data
-    model <- eventReactive(input$run, {
+    model <- eventReactive(input$runLM, {
         lm(formula = y ~ x,
         data = dataInput())
     })
